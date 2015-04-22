@@ -21,15 +21,6 @@ public class SimpleDhtActivity extends Activity {
 
     static final String TAG = SimpleDhtProvider.class.getSimpleName();
 
-    private String genHash(String input) throws NoSuchAlgorithmException {
-        MessageDigest sha1 = MessageDigest.getInstance("SHA-1");
-        byte[] sha1Hash = sha1.digest(input.getBytes());
-        Formatter formatter = new Formatter();
-        for (byte b : sha1Hash) {
-            formatter.format("%02x", b);
-        }
-        return formatter.toString();
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,7 +68,7 @@ public class SimpleDhtActivity extends Activity {
                 cv.put("key",txt.split(",")[0]);
                 cv.put("value",txt.split(",")[0]);
                 try {
-                    response_tv.append("inserted "+genHash(txt));
+                    response_tv.append("inserted "+MyUtils.genHash(txt));
                 } catch (NoSuchAlgorithmException e) {
                     e.printStackTrace();
                 }
