@@ -394,6 +394,7 @@ public class SimpleDhtProvider extends ContentProvider {
                                     String string = values.getAsString("value");
                                     Log.d(TAG, "Insert rcvd:" + key + ":" + string);
                                     insert(null, MyUtils.stringToCv(dhtMessage.cv_msg));
+                                    break;
                                 case QUERY:
                                     Log.d(TAG, "rcvd query msg, fetching cursor");
                                     Cursor cur = query(null, null, dhtMessage.msg, null, null);
